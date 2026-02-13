@@ -22,29 +22,23 @@ class Environment(object):
 
 Environment.MSS = Environment(
     name="mss",
-    base_url="https://mss.cpc.getswish.net/swish-cpcapi/api/v1/",
+    base_url="https://mss.cpc.getswish.net/swish-cpcapi/api/",
     qr_url=None ## MSS doesn't need or have QR codes
 )
+
 Environment.Sandbox = Environment(
     name="sandbox",
-    base_url="https://staging.getswish.pub.tds.tieto.com/swish-cpcapi/api/v1/",
+    base_url="https://staging.getswish.pub.tds.tieto.com/swish-cpcapi/api/",
     qr_url="https://staging.getswish.pub.tds.tieto.com/qrg-swish/api/v1/"
 )
+
 Environment.Production = Environment(
     name="production",
-    base_url="https://cpc.getswish.net/swish-cpcapi/api/v1/",
+    base_url="https://cpc.getswish.net/swish-cpcapi/api/",
     qr_url="https://mpc.getswish.net/qrg-swish/api/v1/"
 )
 
-# deprecated
-Environment.Test = Environment(
-    name="test",
-    base_url="https://mss.cpc.getswish.net/swish-cpcapi/api/v1/",
-    qr_url=None
-)
-
 Environment.All = {
-    "test": Environment.Test,
     "mss": Environment.MSS,
     "sandbox": Environment.Sandbox,
     "production": Environment.Production
