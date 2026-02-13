@@ -1,5 +1,3 @@
-import warnings
-
 import requests
 
 from .environment import Environment
