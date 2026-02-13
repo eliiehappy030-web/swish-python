@@ -29,17 +29,9 @@ class SwishClient(object):
         return requests.post(url=url, json=payload, headers={'Content-Type': 'application/json'},
                              cert=self.cert, verify=self.verify)
 
-    def post(self, endpoint, payload):
-        warnings.warn("You shouldn't be calling this method. It will be private in a future version.", DeprecationWarning)
-        self.__post(endpoint, payload)
-
     def __get(self, endpoint, parameter):
         url = self.environment.base_url + endpoint + '/' + str(parameter)
         return requests.get(url=url, cert=self.cert, verify=self.verify)
-
-    def get(self, endpoint, parameter):
-        warnings.warn("You shouldn't be calling this method. It will be private in a future version.", DeprecationWarning)
-        self.__get(endpoint, parameter)
 
     def __patch(self, endpoint, parameter, payload):
         url = self.environment.base_url + endpoint + '/' + str(parameter)
