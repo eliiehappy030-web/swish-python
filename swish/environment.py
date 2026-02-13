@@ -36,15 +36,7 @@ Environment.Production = Environment(
     qr_url="https://mpc.getswish.net/qrg-swish/api/v1/"
 )
 
-# deprecated
-Environment.Test = Environment(
-    name="test",
-    base_url="https://mss.cpc.getswish.net/swish-cpcapi/api/v1/",
-    qr_url=None
-)
-
 Environment.All = {
-    "test": Environment.Test,
     "mss": Environment.MSS,
     "sandbox": Environment.Sandbox,
     "production": Environment.Production
