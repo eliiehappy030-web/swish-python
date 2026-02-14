@@ -9,7 +9,7 @@ with open(path.join(here, 'LONG_DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='swish',
-    version='1.6',
+    version='1.6.1',
     packages=find_packages(),
     include_package_data=True,
     license='MIT',

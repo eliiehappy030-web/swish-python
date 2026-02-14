@@ -105,25 +105,26 @@ class SwishClient(object):
                      , amount
                      , currency
                      , callback_url
-                     , instructionUUID
+                     , callback_identifier     = None
                      , payer_payment_reference = None
                      , payment_reference       = None
                      , payee_alias             = None
                      , message                 = None
                      ):
+        instruction_uuid = str(uuid.uuid4()).replace('-','').upper()
         refund_request = Refund({ 'payer_alias': self.merchant_swish_number
                                 , 'payee_alias': payee_alias
                                 , 'original_payment_reference' : original_payment_reference
                                 , 'amount'                     : amount
                                 , 'currency'                   : currency
                                 , 'callback_url'               : callback_url
-                                , 'callback_identifier'        : instructionUUID
+                                , 'callback_identifier'        : callback_identifier
                                 , 'payer_payment_reference'    : payer_payment_reference
                                 , 'payment_reference'          : payment_reference
                                 , 'message'                    : message
                                 })
 
-        response = self.__put(f'v2/refunds/{instructionUUID}', refund_request.to_primitive())
+        response = self.__put(f'v2/refunds/{instruction_uuid}', refund_request.to_primitive())
         if response.status_code == 422:
             raise SwishError(response.json())
         response.raise_for_status()
