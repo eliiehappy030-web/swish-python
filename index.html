@@ -3,45 +3,249 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swish</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Min App">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <title>Min App</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      text-align: center;
-      padding: 40px;
-    }
-    .box {
-      background: white;
-      max-width: 400px;
-      margin: auto;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
+      background: #ffffff;
       color: #111;
     }
-    .demo {
-      color: red;
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 35px 20px 20px;
+    }
+
+    .top {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      margin-top: 20px;
+    }
+
+    .screen {
+      display: none;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    .circle-logo {
+      width: 155px;
+      height: 155px;
+      border-radius: 50%;
+      background: conic-gradient(#ff7a18, #ff2ea6, #7a2cff, #2e8bff, #4ee06d, #ffe13b, #ff7a18);
+      margin-bottom: 35px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .text {
+      font-size: 17px;
+      color: #555;
+      max-width: 320px;
+      line-height: 1.4;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+
+    .big-btn {
+      flex: 1;
+      border: none;
+      border-radius: 18px;
+      padding: 18px 8px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #3279d8;
+      color: white;
+    }
+
+    .secondary {
+      background: #d8eef9;
+      color: #17416d;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      color: #5b6472;
+      font-size: 14px;
+      padding-bottom: 10px;
+    }
+
+    .nav-item {
+      width: 25%;
+      cursor: pointer;
+    }
+
+    .nav-item.active {
+      color: #000;
       font-weight: bold;
     }
-    button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 14px 20px;
+
+    .icon {
+      font-size: 26px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .card {
+      background: #f4f4f4;
+      padding: 18px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 340px;
+      margin: 8px 0;
+      text-align: left;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .home-line {
+      width: 140px;
+      height: 5px;
+      background: #777;
       border-radius: 10px;
-      font-size: 16px;
+      margin: 10px auto 0;
+      opacity: 0.65;
     }
   </style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>Demo/Test App</h1>
-    <p class="demo">Detta är bara en demo/test-sida.</p>
-    <p>Ingen riktig betalning sker här.</p>
-    <button>Test-knapp</button>
+  <div class="app">
+    <div class="top">MIN APP</div>
+
+    <div id="home" class="screen active">
+      <div class="circle-logo"></div>
+      <div class="title">Hem</div>
+      <div class="text">Tryck på knapparna längst ner för att testa appens funktioner.</div>
+    </div>
+
+    <div id="action" class="screen">
+      <div class="title">Starta</div>
+      <div class="text">Här kan du lägga din huvudfunktion. Knappen fungerar nu.</div>
+      <div class="card">
+        <b>Status:</b> Aktiv<br>
+        <span class="small">Testflöde inne i appen.</span>
+      </div>
+    </div>
+
+    <div id="scan" class="screen">
+      <div class="title">Skanna</div>
+      <div class="text">Här kan du senare lägga QR, kamera eller egen funktion.</div>
+      <div class="card">
+        <b>Skanner:</b> Redo<br>
+        <span class="small">Tryck funkar visuellt.</span>
+      </div>
+    </div>
+
+    <div id="history" class="screen">
+      <div class="title">Historik</div>
+      <div class="card">
+        <b>Test 1</b><br>
+        <span class="small">Idag 22:59</span>
+      </div>
+      <div class="card">
+        <b>Test 2</b><br>
+        <span class="small">Igår 18:12</span>
+      </div>
+    </div>
+
+    <div id="profile" class="screen">
+      <div class="title">Profil</div>
+      <div class="text">Här kan du ha namn, inställningar och app-info.</div>
+      <div class="card">
+        <b>Användare:</b> Test<br>
+        <span class="small">Profilen finns i sidan.</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="button-row">
+        <button class="big-btn primary" onclick="showScreen('action')">Starta</button>
+        <button class="big-btn secondary" onclick="showScreen('scan')">Skanna</button>
+      </div>
+
+      <div class="nav">
+        <div class="nav-item active" onclick="showScreen('home', this)">
+          <span class="icon">⌂</span>
+          Hem
+        </div>
+
+        <div class="nav-item" onclick="showScreen('action', this)">
+          <span class="icon">♡</span>
+          Tillsammans
+        </div>
+
+        <div class="nav-item" onclick="showScreen('history', this)">
+          <span class="icon">◷</span>
+          Historik
+        </div>
+
+        <div class="nav-item" onclick="showScreen('profile', this)">
+          <span class="icon">♙</span>
+          Profil
+        </div>
+      </div>
+
+      <div class="home-line"></div>
+    </div>
   </div>
+
+  <script>
+    function showScreen(screenId, navElement) {
+      document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+      });
+
+      document.getElementById(screenId).classList.add("active");
+
+      if (navElement) {
+        document.querySelectorAll(".nav-item").forEach(item => {
+          item.classList.remove("active");
+        });
+
+        navElement.classList.add("active");
+      }
+    }
+  </script>
 </body>
 </html>
