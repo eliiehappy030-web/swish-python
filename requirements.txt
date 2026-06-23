@@ -1,2 +1,4 @@
 requests>=2.9.1
 schematics>=2.0.1
+flask
+gunicorn
